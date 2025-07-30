@@ -20,15 +20,83 @@
   </body>
 
   <script>
+    // partie 1
     // 🦁 Crée un button avec le text "Hello 👋"
     // 🦁 Ajoute une événement "onClick" à notre button qui affiche une alert.
+    const button = React.createElement(
+      'button',
+      {
+        className: 'btn btn-primary',
+        onClick: () => alert('Tu as cliqué sur Hello !'),
+      },
+      'Hello 👋'
+    );
 
     // 🦁 Crée une div : "main" avec à l'intérieur le bouton.
+    const main = React.createElement(
+      'div',
+      null,
+      button,
+      React.createElement(Card),
+      React.createElement(List)
+    );
+
     // 💡 On utilise un div `main` car la méthode `render` accepte qu'un seul élément
     // 💡 On va donc utiliser cette div pour render tous nos éléments
-
     const container = document.querySelector('#root');
-    const root = undefined; // 🦁 Remplace `undefined` by `ReactDOM.createRoot(container);`
+    const root = ReactDOM.createRoot(container); // 🦁 Remplace `undefined` by `ReactDOM.createRoot(container);`
+
     // 🦁 Utilise `root.render` pour afficher la div "main"
+    root.render(main);
+
+    //partie 2
+    function Card() {
+      const card = React.createElement(
+        'div',
+        { className: 'card bg-base-300 w-96 shadow-xl' },
+        React.createElement(
+          'figure',
+          {},
+          React.createElement('img', {
+            src: 'https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg',
+            alt: 'Shoes',
+          })
+        ),
+        React.createElement(
+          'div',
+          { className: 'card-body' },
+          React.createElement('h2', { className: 'card-title' }, 'Shoes'),
+          React.createElement(
+            'p',
+            {},
+            'If a dog chews shoes whose shoes does he choose?'
+          ),
+          React.createElement(
+            'div',
+            { className: 'card-actions justify-end' },
+            React.createElement(
+              'button',
+              { className: 'btn btn-primary' },
+              'Buy Now'
+            )
+          )
+        )
+      );
+      return card;
+    }
+
+    //partie 3
+    function List() {
+      // 🦁 Crée une liste non ordonnée avec les fruits suivants : pomme, poire, fraise, cerise
+      const fruits = ['pomme', 'poire', 'fraise', 'cerise'];
+      const elements = fruits.map((fruit) =>
+        React.createElement('li', {}, fruit)
+      );
+      return React.createElement(
+        'ul',
+        { className: 'list-disc list-inside' },
+        elements
+      );
+    }
   </script>
 </html>

@@ -6,14 +6,61 @@
   </body>
 
   <script>
+    //partie 1
     // 🦁 crée un div avec l'id "root" et la classe "container"
-    
+    let div = document.createElement('div');
+    div.id = 'root';
+    div.className = 'container';
+    document.body.appendChild(div);
+
     // 🦁 crée un button
-    
+    let button = document.createElement('button');
+
     // 🦁 ajoute les classes "btn" et "btn-primary" dedans
-    
+    button.className = 'btn btn-primary';
+
     // 🦁 ajoute le text "Hello 👋" dedans
-    
+    button.innerText = 'Hello 👋';
+
     // 🦁 ajoute le button dans l'élément "root"
+    div.appendChild(button);
+
+    //partie 2
+    button.addEventListener('click', () => {
+      // 🦁 ajoute un alert avec le message "Hello World"
+      alert('Tu as cliqué sur Hello !');
+    });
+
+    //partie 3
+    const Counter = (initialValue) => {
+      const button = document.createElement('button'); // 🦁 remplace "" par la création d'un bouton
+
+      // 🦁 ajoute les classes "btn" et "btn-primary" dedans
+      button.className = 'btn btn-primary';
+
+      // 🦁 ajoute le text "Hello 👋" dedans
+      button.innerText = 'Hello 👋';
+
+      button.innerText = initialValue; // 🦁 remplace "" par le texte du bouton
+
+      // 🦁 Ajout de l'event
+      button.addEventListener('click', () => {
+        // 🦁 Incrémente le texte du bouton de 1 à chaque clic
+        button.innerText = Number(button.innerText) + 1;
+      });
+      return button;
+    };
+    div.appendChild(Counter(0));
+    div.appendChild(Counter(10));
+
+    //partie 4
+    const fruits = ['banana', 'apple', 'strawberry'];
+    const ul = document.createElement('ul'); // 🦁 crée une liste non ordonné
+    for (const fruit of fruits) {
+      const li = document.createElement('li'); // 🦁 crée un élément de liste
+      li.innerText = fruit; // 🦁 ajoute le nom du fruit dans l'élément de liste
+      ul.appendChild(li); // 🦁 ajoute l'élément de liste dans la liste
+    }
+    div.appendChild(ul); // 🦁 ajoute la liste dans l'élément "root"
   </script>
 </html>
